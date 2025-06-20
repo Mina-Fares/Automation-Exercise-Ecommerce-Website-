@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Automation Exercise regression test suite">
+  <parameter name="browser" value="chrome"></parameter>
+  <test name="Regression">
+    <classes>
+    </classes>
+  </test> 
+</suite> 

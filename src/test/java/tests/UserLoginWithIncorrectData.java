@@ -1,0 +1,73 @@
+package tests;
+
+import static org.testng.Assert.assertEquals;
+
+import java.util.Random;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.github.javafaker.Faker;
+
+import pages.AccountInformationPage;
+import pages.HomePage;
+import pages.LoginOrSignupPage;
+import pages.MyAccountPage;
+
+public class UserLoginWithIncorrectData extends TestBase {
+	HomePage homepage;
+	LoginOrSignupPage page;
+	AccountInformationPage accountpage;
+	MyAccountPage mypage;
+	Faker faker=new Faker();
+	String name=faker.name().username();
+	String email=faker.internet().emailAddress();
+	String password=faker.number().digits(8);
+	String password1=faker.number().digits(8);
+	Random random=new Random();
+	int day=random.nextInt(30)+0;
+	String[] months = {
+			"January", "February", "March", "April", "May", "June",
+			"July", "August", "September", "October", "November", "December"
+	};
+	String randomMonth = months[faker.random().nextInt(12)];
+	int year=random.nextInt(124)+0;
+	String firstname=faker.name().firstName();
+	String lastname=faker.name().lastName();
+	String company=faker.company().name();
+	String address=faker.address().fullAddress();
+	int country=random.nextInt(6)+0;
+	String state=faker.address().state();
+	String city=faker.address().city();
+	String zipcode=faker.address().zipCode();
+	String mobilenuber=faker.phoneNumber().cellPhone();
+	@Test
+	public void UserCanRegisterAndLoginSuccessfully() {
+		homepage=new HomePage(driver);
+		page=new LoginOrSignupPage(driver);
+		accountpage=new AccountInformationPage(driver);
+		mypage=new MyAccountPage(driver);
+		homepage.pressConsent();
+		Assert.assertEquals(driver.getCurrentUrl(),"https://www.automationexercise.com/");
+		System.out.println(driver.getCurrentUrl());
+		homepage.openLoginOrSignupPage();
+		Assert.assertEquals(page.newusermessage.getText(),"New User Signup!");
+		System.out.println(page.newusermessage.getText());
+		page.userRegister(name,email);
+		Assert.assertEquals(accountpage.pagetitle.getText(),"ENTER ACCOUNT INFORMATION");
+		System.out.println(accountpage.pagetitle.getText());
+		accountpage.hideAds();
+		accountpage.userEntersHisData(password, day,randomMonth,year,firstname,lastname,company,address,country,state,city, zipcode,mobilenuber);
+		Assert.assertTrue(accountpage.confirmationmessage.getText().contains("ACCOUNT CREATED!"));
+		System.out.println(accountpage.confirmationmessage.getText());
+		accountpage.redirectToTheNextPage();
+		mypage.userCanLogout();
+		assertEquals(page.registeredusermessage.getText(),"Login to your account");
+		System.out.println(page.registeredusermessage.getText());
+		page.userLogin(email, password1);
+		Assert.assertTrue(page.errormessage.isDisplayed());
+		System.out.println(page.errormessage.getText());
+	}
+}
+
+
