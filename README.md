@@ -1,39 +1,73 @@
-# 🧪 Automation Exercise Test Suite
+🧪 Automation Exercise Website Testing Project
+This project contains end-to-end UI automation scripts for the Automation Exercise website using Selenium WebDriver with Java, TestNG, Maven, and the Page Object Model (POM) design pattern.
 
-This project is a comprehensive UI automation test suite for [Automation Exercise](https://www.automationexercise.com/), a practice website for automation engineers. The test cases are implemented using **Selenium WebDriver**, **Java**, **TestNG**, **Maven**, and follow the **Page Object Model (POM)** design pattern.
 
-## 📑 Project Structure
+📌 Table of Contents:
+
+🔧 Technologies Used
+📁 Project Structure
+✅ Automated Test Scenarios
+
+
+🔧 Technologies Used:
+
+🖥 Language: Java
+🧪 Framework: TestNG
+🛠 Automation Tool: Selenium WebDriver
+📦 Build Tool: Maven
+📄 Design Pattern: Page Object Model (POM)
+🌐 Test Target: Automation Exercise
+
+
+📁 Project Structure
 
 ├── src
-│ ├── main
-│ │ └── java
-│ │ └── pages # Page Object classes (LoginPage, HomePage, etc.)
-│ ├── test
-│ │ └── java
-│ │ └── tests # Test classes for each feature/test case
-├── testng.xml # TestNG test suite configuration
-├── pom.xml # Maven project file with dependencies
-└── README.md
+│   ├── main
+│   │   └── java
+│   │       └── pages              # Page classes (e.g., HomePage, SignupPage)
+│   └── test
+│       └── java
+│           ├── tests             # Test classes
+│           └── utilities         # Helpers (e.g., browser actions, waits, screenshots)
+├── pom.xml                       # Maven dependencies
+└── testng.xml                    # Test suite config
 
-## 🧰 Tech Stack
 
-- **Java 21**
-- **Selenium WebDriver**
-- **TestNG**
-- **Maven**
-- **Page Object Model (POM)**
+✅ Automated Test Scenarios:
+The following test cases from the official Automation Exercise Test Cases are implemented:
 
-## ✅ Automated Test Cases
 
-This project covers the [official Automation Exercise test cases](https://www.automationexercise.com/test_cases), including but not limited to:
+🔐 User Authentication
 
-- Register User
-- Login User with valid/invalid credentials
-- Logout
-- Contact Us form
-- Add to Cart functionality
-- Product Search
-- Checkout and Payment Process
-- Scroll Up/Down functionality
-- Subscription and Verification
-- Account Deletion
+Register a new user
+Login with valid/invalid credentials
+Logout user
+Delete account
+
+
+🛍 Product Interactions
+
+View all products
+View product details
+Search for a product
+Add product to cart
+View cart & verify items
+Remove products from cart
+
+
+🧾 Orders
+
+Place order while registered
+Place order while checkout
+Download invoice
+Review order history
+
+
+💬 Miscellaneous
+
+Contact us form
+Scroll down and up using arrow button
+Scroll up without arrow button
+Verify subscription in footer
+Verify recommended items
+
